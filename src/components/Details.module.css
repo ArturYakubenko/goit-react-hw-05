@@ -1,0 +1,62 @@
+.movePoster {
+    width: 500px;
+    height: 300px;
+    object-fit: contain;
+    margin-top: 30px;
+    margin-left: 5px;
+    border-radius: 2px;
+    margin-bottom: 30px;
+    
+}
+
+.detailsWrap {
+    border: 2px solid rgb(221, 223, 233);
+    border-top: none;
+    display: flex;
+    gap: 30px;
+}
+
+.detailsWrap div {
+    margin-top: 30px;
+}
+
+.name {
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.overview {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    display: block;
+}
+
+.extra {
+    margin-top: 0;
+}
+
+.additionInf {
+    border: 2px solid rgb(221, 223, 233);
+    border-top: none;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    
+}
+
+.link {
+    margin-top: 10px;
+}
+
+.link :first-child {
+    margin-top: 30px;
+}
+
+.back {
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    transform: translateX(10px) translateY(10px);
+}

@@ -1,0 +1,16 @@
+.actorsList {
+    list-style: none;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actorsList h3 {
+    margin: 0;
+    font-size: 12px;
+}
+
+.actCard {
+    width: 100px;
+    object-fit: contain;
+}
