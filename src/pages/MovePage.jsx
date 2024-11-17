@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
-const Move = () => {
+const Movies = () => {
 
     const [text, setText] = useState(null)
     const [searchArray, setSearchArray] = useState(null)
@@ -63,7 +63,7 @@ const Move = () => {
                 {searchArray !== null && searchArray.length > 0 ? (searchArray.map((item, id) => {
                     return (
                         <li key={id}>
-                            <Link to={`/Move/${item.id}`}>{item.title}</Link>
+                            <Link to={`/Movies/${item.id}`}>{item.title}</Link>
                         </li>
                 )
                 })) : (null)}
@@ -73,4 +73,4 @@ const Move = () => {
     )
 }
 
-export default Move
+export default Movies

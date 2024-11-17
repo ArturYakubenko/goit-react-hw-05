@@ -3,18 +3,17 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import css from './Casts.module.css'
 
-const Casts = () => {
+const Cast = () => {
 
-    const { id } = useParams()
+    const { Movieid } = useParams()
     const forImgAct = "https://image.tmdb.org/t/p/w500"
     const [actors, setActors] = useState(null)
      const [loading, setLoading] = useState(false);
-
     useEffect(() => {
 
     const fetchCastst = async () => {
         setLoading(true)
-        const url = `https://api.themoviedb.org/3/movie/${id}/credits`
+        const url = `https://api.themoviedb.org/3/movie/${Movieid}/credits`
             const options = {
                     params : {
                     Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYTdlYWEwM2E1MTkzNjk3ODQ4NGQzNGE3ZjFkMDdlYyIsIm5iZiI6MTczMDkzMDI2Ny44MTIwNDQ2LCJzdWIiOiI2NzJhMTcyZjA2ZGM4ODU5NjMyNDBjZTQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.iYetET6XeiyOWU32L5POgtUJsmqPOUFH8rDkB5N2IAk',
@@ -52,4 +51,4 @@ const Casts = () => {
     )
 }
 
-export default Casts
+export default Cast

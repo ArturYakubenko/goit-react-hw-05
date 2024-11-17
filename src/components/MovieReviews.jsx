@@ -4,7 +4,7 @@ import axios from "axios"
 
 const Reviwes = () => {
 
-    const { id } = useParams()
+    const { Movieid } = useParams()
 
     const [rew, setRew] = useState(null)
     const [loading, setLoading] = useState(false);
@@ -14,7 +14,7 @@ const Reviwes = () => {
 
     const fetchRew = async () => {
         setLoading(true)
-        const url = `https://api.themoviedb.org/3/movie/${id}/reviews
+        const url = `https://api.themoviedb.org/3/movie/${Movieid}/reviews
 `
             const options = {
                     params : {

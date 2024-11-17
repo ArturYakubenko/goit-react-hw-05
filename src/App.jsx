@@ -1,32 +1,28 @@
 import './App.css';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from "react";
-import css from './App.module.css';
-import clsx from 'clsx';
 
-const HomePages = lazy(() => import('./pages/HomePages'));
-const Move = lazy(() => import('./pages/Move'));
-const HomePageCheckMove = lazy(() => import('./pages/HomePageCheckMove'));
-const Casts = lazy(() => import('./components/Casts'));
-const Reviwes = lazy(() => import('./components/Reviwes'));
+
+const HomePages = lazy(() => import('./pages/HomePage'));
+const Movies = lazy(() => import('./pages/MovePage'));
+const HomePageCheckMove = lazy(() => import('./pages/MoveList'));
+const Cast = lazy(() => import('./components/MovieCast'));
+const Reviwes = lazy(() => import('./components/MovieReviews'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
-
+const Navigate = lazy(() => import('./components/Navigate'))
 function App() {
-  const buildClass = ({isActive}) => clsx(css.link, isActive && css.active);
+  
   
   return (
     <div className='appWrap'>
-      <header>
-        <NavLink to="/" className={buildClass}>Home</NavLink>
-        <NavLink to="/Move" className={buildClass}>Move</NavLink>
-      </header>
+      <Navigate/>
       <main>
          <Suspense fallback={<div>Loading page...</div>}>
           <Routes>
             <Route path='/' element={<HomePages />} /> 
-            <Route path='/Move' element={<Move />} /> 
-            <Route path='/Move/:id' element={<HomePageCheckMove />}>
-              <Route path='Casts' element={<Casts />} />
+            <Route path='/Movies' element={<Movies />} /> 
+            <Route path='/Movies/:Movieid' element={<HomePageCheckMove />}>
+              <Route path='Cast' element={<Cast />} />
               <Route path='Reviwes' element={<Reviwes />} />
             </Route>
             <Route path='*' element={<NotFoundPage/>}/>

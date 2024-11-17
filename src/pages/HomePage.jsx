@@ -39,7 +39,7 @@ const HomePages = () => {
             <ul >
                { popularMove !== null && (popularMove.map((item, id) => 
                    { return (<li key={id}>
-                        <Link to={`/Move/${item.id}`}>{item.title}</Link>
+                        <Link to={`/Movies/${item.id}`}>{item.title}</Link>
                     </li>)}
               ))}
             </ul>

@@ -5,8 +5,7 @@ import css from './Details.module.css'
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const Details = ({ id }) => {
-
+const Details = ({ Movieid }) => {
     const navigate = useNavigate();
     
     const [product, setProduct] = useState(null)
@@ -16,7 +15,7 @@ const Details = ({ id }) => {
     useEffect(() => {
         const fetchProduct = async () => {
             setLoading(true)
-            const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US`
+            const url = `https://api.themoviedb.org/3/movie/${Movieid}?language=en-US`
             const options = {
                     params : {
                         Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYTdlYWEwM2E1MTkzNjk3ODQ4NGQzNGE3ZjFkMDdlYyIsIm5iZiI6MTczMDkzMDI2Ny44MTIwNDQ2LCJzdWIiOiI2NzJhMTcyZjA2ZGM4ODU5NjMyNDBjZTQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.iYetET6XeiyOWU32L5POgtUJsmqPOUFH8rDkB5N2IAk',
@@ -59,8 +58,8 @@ const Details = ({ id }) => {
             </div>
             <div className={css.additionInf}>
                 <span className={`${css.overview} ${css.extra}`}>Addition Information</span>
-                    <NavLink className={css.link} to={`/Move/${id}/Casts`}>Cast</NavLink>
-                    <NavLink className={css.link} to={`/Move/${id}/Reviwes`}>Reviwes</NavLink>
+                    <NavLink className={css.link} to={`/Movies/${Movieid}/Cast`}>Cast</NavLink>
+                    <NavLink className={css.link} to={`/Movies/${Movieid}/Reviwes`}>Reviwes</NavLink>
             </div>
         </div>
     )

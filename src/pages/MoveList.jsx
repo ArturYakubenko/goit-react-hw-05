@@ -1,14 +1,14 @@
 import { useParams, Outlet } from "react-router-dom"
-import Details from "../components/Details"
+import Details from "../components/MovieDetailsPage"
 
 const HomePageCheckMove = () => {
 
 
-    const { id } = useParams()
+    const { Movieid } = useParams()
  
     return (
         <>
-            <Details id={id} />
+            <Details Movieid={Movieid} />
             <Outlet />
         </>
     )
