@@ -1,17 +1,17 @@
 import axios from "axios";
 import { useEffect, useState, useRef } from "react";
 import css from './Details.module.css';
-import { NavLink, useNavigate, useParams, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation, useNavigate, useParams} from 'react-router-dom';
 
 const Details = () => {
-    const navigate = useNavigate();
-    const { Movieid } = useParams(); // Використовуємо useParams для отримання ID фільму з URL
-    const location = useLocation(); // Використовуємо useLocation для доступу до локації
-    const backButtonRef = useRef(null); // Використовуємо useRef для збереження посилання на кнопку Back
-
+    const { Movieid } = useParams(); 
     const [product, setProduct] = useState(null);
     const forImg = "https://image.tmdb.org/t/p/w500";
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
+    const backLocation = useRef(location.state?.from ?? '/movies')
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -35,7 +35,7 @@ const Details = () => {
         };
 
         fetchProduct();
-    }, [Movieid]); // Зміна ID фільму активує повторний виклик
+    }, [Movieid]); 
 
     if (!product) {
         return null;
@@ -46,9 +46,8 @@ const Details = () => {
             {loading ? <p>Loading data, please wait...</p> : null}
             <div className={css.detailsWrap}>
                 <button
-                    ref={backButtonRef} // Прив'язуємо до кнопки Back
                     className={css.back}
-                    onClick={() => navigate(-1)}
+                    onClick={() => navigate(backLocation.current)}
                 >
                     Back
                 </button>
@@ -64,9 +63,10 @@ const Details = () => {
             </div>
             <div className={css.additionInf}>
                 <span className={`${css.overview} ${css.extra}`}>Addition Information</span>
-                <NavLink className={css.link} to={`/Movies/${Movieid}/Cast`}>Cast</NavLink>
-                <NavLink className={css.link} to={`/Movies/${Movieid}/Reviwes`}>Reviwes</NavLink>
+                <NavLink className={css.link} to={`/Movies/${Movieid}/cast`}>Cast</NavLink>
+                <NavLink className={css.link} to={`/Movies/${Movieid}/reviews`}>Reviews</NavLink>
             </div>
+            <Outlet/>
         </div>
     );
 };

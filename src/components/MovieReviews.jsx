@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import axios from "axios"
-import api from "../../api";
 
-const Reviwes = () => {
+const Reviews = () => {
 
     const { Movieid } = useParams()
 
@@ -19,8 +18,7 @@ const Reviwes = () => {
 `
             const options = {
                     params : {
-                        Authorization: api.token,
-                        api_key: api.apiKey,
+                        api_key: "ea7eaa03a51936978484d34a7f1d07ec",
             }
             }
             try {
@@ -53,4 +51,4 @@ const Reviwes = () => {
     )
 }
 
-export default Reviwes
+export default Reviews

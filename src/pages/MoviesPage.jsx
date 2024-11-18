@@ -1,10 +1,10 @@
-import { Outlet } from 'react-router-dom'
+
 import css from './Move.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 import { useSearchParams } from 'react-router-dom'
 import api from '../../api'
+import MovieList from '../components/MovieList'
 
 const Movies = () => {
 
@@ -34,7 +34,7 @@ const Movies = () => {
                 params: {
                         query: `${query}`,
                         Authorization: api.token,
-                        api_key: api.apiKey,
+                        api_key: "ea7eaa03a51936978484d34a7f1d07ec",
             }
             }
                     try {
@@ -65,16 +65,7 @@ const Movies = () => {
                 <button type='submit'>Search</button>
             </form>
             {loading ? <p>Loading data, please wait...</p> : null}
-            <ul>
-                {searchArray !== null && searchArray.length > 0 ? (searchArray.map((item, id) => {
-                    return (
-                        <li key={id}>
-                            <Link to={`/Movies/${item.id}`}>{item.title}</Link>
-                        </li>
-                )
-                })) : (null)}
-            </ul>
-            <Outlet/>
+            <MovieList popularMove={searchArray} />
         </>
     )
 }
