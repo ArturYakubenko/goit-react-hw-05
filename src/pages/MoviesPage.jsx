@@ -3,32 +3,38 @@ import css from './Move.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
+import api from '../../api'
 
 const Movies = () => {
 
-    const [text, setText] = useState(null)
+    const [searchParams, setSearchParams] = useSearchParams();
     const [searchArray, setSearchArray] = useState(null)
     const [loading, setLoading] = useState(false);
 
-    const handlerSearch = (evt) => {
-        evt.preventDefault()
-        setText(evt.target[0].value)
-         evt.target.reset()
-    }
+    const query = searchParams.get('query') || '';
 
+
+
+    const handlerSearch = (evt) => {
+        evt.preventDefault();
+        const searchText = evt.target[0].value;
+        setSearchParams({ query: searchText });
+        evt.target.reset();
+    };
     useEffect(() => {
 
         
          
-            if (text !== null) {
+            if (query) {
                 const fetchSearch = async () => {
                     setLoading(true)
             const url = 'https://api.themoviedb.org/3/search/movie'
             const options = {
                 params: {
-                        query: `${text}`,
-                        Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYTdlYWEwM2E1MTkzNjk3ODQ4NGQzNGE3ZjFkMDdlYyIsIm5iZiI6MTczMDkzMDI2Ny44MTIwNDQ2LCJzdWIiOiI2NzJhMTcyZjA2ZGM4ODU5NjMyNDBjZTQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.iYetET6XeiyOWU32L5POgtUJsmqPOUFH8rDkB5N2IAk',
-                        api_key: 'ea7eaa03a51936978484d34a7f1d07ec',
+                        query: `${query}`,
+                        Authorization: api.token,
+                        api_key: api.apiKey,
             }
             }
                     try {
@@ -50,7 +56,7 @@ const Movies = () => {
             return
             }
               
-    },[text])
+    },[query])
 
     return (
         <>

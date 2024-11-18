@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
 import axios from "axios"
+import api from "../../api";
 
 const Reviwes = () => {
 
@@ -18,8 +19,8 @@ const Reviwes = () => {
 `
             const options = {
                     params : {
-                    Authorization: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlYTdlYWEwM2E1MTkzNjk3ODQ4NGQzNGE3ZjFkMDdlYyIsIm5iZiI6MTczMDkzMDI2Ny44MTIwNDQ2LCJzdWIiOiI2NzJhMTcyZjA2ZGM4ODU5NjMyNDBjZTQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.iYetET6XeiyOWU32L5POgtUJsmqPOUFH8rDkB5N2IAk',
-                    api_key: 'ea7eaa03a51936978484d34a7f1d07ec',
+                        Authorization: api.token,
+                        api_key: api.apiKey,
             }
             }
             try {
@@ -34,7 +35,7 @@ const Reviwes = () => {
       }
         }
         fetchRew()
-    }, []) 
+    }, [Movieid]) 
 
     return (
         <div>
